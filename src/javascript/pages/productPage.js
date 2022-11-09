@@ -1,4 +1,4 @@
-import { ProductItem } from "../components/Product/index.js";
+import { ProductCard } from "../components/ProductCard/index.js";
 
 class ProductPage {
   constructor() {
@@ -18,19 +18,25 @@ class ProductPage {
   async setProductList() {
     await this.getProductData();
     console.log(this.product);
-
     this.mainElement.classList.add("product");
-    this.mainElement.innerHTML = `
-      <h1 class ="ir">상품목록 페이지</h1>
-      <ul class = "product-list"></ul>
-    `;
 
-    const productList = this.mainElement.querySelector(".product-list");
+    const productPageHeader = document.createElement("h1");
+    productPageHeader.setAttribute("class", "ir");
+    productPageHeader.innerText = "상품목록 페이지";
+    this.mainElement.appendChild(productPageHeader);
+
+    const productList = document.createElement("ul");
+    productList.setAttribute("class", "product-list");
 
     this.product.forEach((item) => {
-      const productItem = new ProductItem(item);
-      productList.append(productItem.render());
+      const productItem = document.createElement("li");
+      productItem.setAttribute("class", "product-item");
+      const productCard = new ProductCard(item);
+      productItem.appendChild(productCard.render());
+      productList.appendChild(productItem);
     });
+
+    this.mainElement.append(productList);
   }
 
   render() {
