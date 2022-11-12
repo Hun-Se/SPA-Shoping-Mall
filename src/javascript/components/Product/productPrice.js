@@ -20,8 +20,8 @@ class ProductPrice extends Component {
 
       const originPrice = document.createElement("strong");
       originPrice.setAttribute("class", "price-strikethrough");
-      originPrice.innerText = this.props.price;
-      originPrice.appendChild(priceType);
+      originPrice.innerText =
+        this.props.price.toLocaleString("ko-Kr") + priceType.innerText;
 
       const discountRateDisplay = document.createElement("strong");
       discountRateDisplay.setAttribute("class", "discount-rate");
@@ -30,13 +30,13 @@ class ProductPrice extends Component {
       this.props.price =
         this.props.price - this.props.price * (0.01 * this.props.discountRate);
 
+      originPrice.appendChild(priceType);
       discountRateContainer.appendChild(originPrice);
-      discountRateContainer.appendChild(priceType.cloneNode(true));
       discountRateContainer.appendChild(discountRateDisplay);
       productPriceContainer.appendChild(discountRateContainer);
     }
 
-    productPrice.innerText = this.props.price;
+    productPrice.innerText = this.props.price.toLocaleString("ko-Kr");
     productPrice.appendChild(priceType);
     return productPriceContainer;
   }
