@@ -61,7 +61,6 @@ class ProductLikeButton extends Component {
       e.preventDefault(); // html의 기본동작(새로고침,submit 등)을 막는다.
       e.stopPropagation(); // 버블링 중단하기(이벤트 캡처링과 버블링), 이벤트 전파를 막는다.
       this.changeLiked();
-      console.log(this.state.liked);
     });
     return likeButton;
   }

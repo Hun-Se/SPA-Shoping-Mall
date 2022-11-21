@@ -17,7 +17,6 @@ class ProductDetail {
   // 상품 리스트 세팅하기
   async setProductList() {
     await this.getProductData();
-    console.log(this.product);
   }
 
   render() {
@@ -34,6 +33,7 @@ class ProductDetail {
     container.appendChild(element);
 
     this.setProductList();
+    console.log("hi");
 
     return container;
   }

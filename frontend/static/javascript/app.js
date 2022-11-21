@@ -7,13 +7,11 @@ export default class App {
   }
   async setup() {
     const { el } = this.props;
-
-    const router = new Router({
-      "/": ProductPage,
-      // "/detail": ProductDetail,
-      "/detail/:id": ProductDetail,
-    });
-
-    router.init(el);
+    const routes = [
+      { path: "/", view: ProductPage },
+      // { path: "/dtail", view: ProductDetail },
+      { path: "/dtail/:id", view: ProductDetail },
+    ];
+    new Router(routes, el).router();
   }
 }

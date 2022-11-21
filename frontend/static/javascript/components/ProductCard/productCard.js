@@ -11,6 +11,7 @@ class ProductCard extends Component {
   render() {
     const product = document.createElement("a");
     product.setAttribute("href", `/detail/${this.props.item.id}`);
+    product.setAttribute("data-link", "");
     product.setAttribute("class", "product-item");
 
     const productImage = new ProductImage({
